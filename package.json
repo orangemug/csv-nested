@@ -2,11 +2,12 @@
   "name": "csv-nested",
   "version": "0.1.0",
   "dependencies": {
-    "through": "^2.3.6"
+    "through": "^2.3.6",
+    "yargs": "^1.3.2",
+    "fast-csv": "^0.5.3",
+    "stream-sink": "^1.2.0"
   },
   "devDependencies": {
-    "fast-csv": "^0.5.3",
-    "mocha": "^2.0.1",
-    "stream-sink": "^1.2.0"
+    "mocha": "^2.0.1"
   }
 }
