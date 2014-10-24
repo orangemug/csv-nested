@@ -27,6 +27,24 @@ Will produce the JSON
 ## Usage
 See [tests](test/index.js)
 
+There is also a CLI, to install it
+
+    npm install -g git+https://github.com/orangemug/gitook.git
+
+And to use
+
+    $ node csv-nested-parser
+    Parse nested csv.
+    Usage: node csv-nested-parser [filepath]
+
+    Examples:
+      csv-nested-parser ./path/to/file.csv    Converts csv to object
+
+
+    Options:
+      --num-headers  number of headers  [default: 2]
+      --pretty       pretty print JSON
+
 
 ## Tests
 To run the tests
