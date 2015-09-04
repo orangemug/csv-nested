@@ -57,4 +57,4 @@ To run the tests
 
 
 ## License
-MIT
+[MIT](LICENSE)
