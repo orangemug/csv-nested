@@ -17,27 +17,37 @@ describe("csv-nested", function() {
 		inStream
 			.pipe(csvStream)
 			.pipe(csvNested(2))
-			.pipe(sink())
 			.on("data", function(data) {
 				var a = JSON.parse(data);
 				var b = JSON.parse(outData.toString());
 				assert.deepEqual(a, b);
+			})
+      .on("end", function() {
 				done();
-			});
+      })
 
 	});
 
 	it("duplicate error", function(done) {
 		var inStream = fs.createReadStream(__dirname+"/duplicate-error/in.csv");
 
+    var idx = 0;
+    var errs = [
+      "Duplicate header detected: 'group1|one'",
+      "Duplicate header detected: 'group1|two'"
+    ];
+
 		inStream
 			.pipe(csv())
 			.pipe(csvNested(2))
       .on("error", function(err) {
         assert(err);
-        assert.equal(err, "Duplicate header detected: 'group1|one'");
-        done();
-      });
+        assert.equal(err, errs[idx]);
+        idx++;
+        if(idx === 2) {
+          done();
+        }
+      })
   });
 
 });

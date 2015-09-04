@@ -37,5 +37,6 @@ inStream
     } else {
       console.log(data);
     }
+    process.exit(0);
   });
 

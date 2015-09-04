@@ -83,7 +83,7 @@ module.exports = function(numOfHeaderRows, opts) {
     this.idx++;
   }, function() {
     this.queue(JSON.stringify(this.rows));
-    this.queue(null);
+    this.emit("end");
   });
 }
 
