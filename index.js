@@ -7,6 +7,7 @@ module.exports = function(numOfHeaderRows, opts) {
   var keyTransform = opts.keyTransform || normalizeKeys;
 
   return through(function write(data) {
+    var self = this;
     this.idx     = this.idx     || 0;
     this.rows    = this.rows    || [];
     this.headers = this.headers || [];
@@ -56,7 +57,8 @@ module.exports = function(numOfHeaderRows, opts) {
         }
 
         if(out[header] !== undefined && out[header] !== "") {
-          out[header] += item;
+          self.emit("error", "Duplicate header detected: '"+header+"'")
+          return;
         } else {
           out[header] = item;
         }
