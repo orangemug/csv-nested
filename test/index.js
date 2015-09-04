@@ -9,8 +9,8 @@ describe("csv-nested", function() {
 
 	// NOTE: Just a starting point
 	it("basic test", function(done) {
-		var inStream = fs.createReadStream(__dirname+"/basic/in/grouped.csv");
-		var outData  = fs.readFileSync(__dirname+"/basic/out/grouped.json");
+		var inStream = fs.createReadStream(__dirname+"/basic/in.csv");
+		var outData  = fs.readFileSync(__dirname+"/basic/out.json");
 
 		var csvStream = csv();
 
@@ -28,7 +28,7 @@ describe("csv-nested", function() {
 	});
 
 	it("duplicate error", function(done) {
-		var inStream = fs.createReadStream(__dirname+"/duplicate-error/in/grouped.csv");
+		var inStream = fs.createReadStream(__dirname+"/duplicate-error/in.csv");
 
 		inStream
 			.pipe(csv())
