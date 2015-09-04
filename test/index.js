@@ -8,9 +8,9 @@ var csvNested = require("../");
 describe("csv-nested", function() {
 
 	// NOTE: Just a starting point
-	it("should work", function(done) {
-		var inStream = fs.createReadStream(__dirname+"/in/grouped.csv");
-		var outData  = fs.readFileSync(__dirname+"/out/grouped.json");
+	it("basic test", function(done) {
+		var inStream = fs.createReadStream(__dirname+"/basic/in/grouped.csv");
+		var outData  = fs.readFileSync(__dirname+"/basic/out/grouped.json");
 
 		var csvStream = csv();
 
