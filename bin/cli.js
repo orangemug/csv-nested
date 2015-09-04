@@ -23,6 +23,10 @@ var csvStream = csv();
 inStream
   .pipe(csvStream)
   .pipe(csvNested(numHeaders))
+  .on("error", function(err) {
+    console.error(err);
+    process.exit(1);
+  })
   .pipe(sink())
   .on("data", function(data) {
     if(pretty) {
