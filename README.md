@@ -1,6 +1,10 @@
 # csv-nested
 Gets nested object from a csv file.
 
+[![circleci](https://circleci.com/gh/orangemug/csv-nested.png?style=shield)](https://circleci.com/gh/orangemug/csv-nested)
+[![Dependency Status](https://david-dm.org/orangemug/csv-nested.svg)](https://david-dm.org/orangemug/csv-nested)
+[![Dev Dependency Status](https://david-dm.org/orangemug/csv-nested/dev-status.svg)](https://david-dm.org/orangemug/csv-nested#info=devDependencies)
+
 
 # Example
 For instance given
