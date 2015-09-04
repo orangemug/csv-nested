@@ -29,17 +29,15 @@ describe("csv-nested", function() {
 
 	it("duplicate error", function(done) {
 		var inStream = fs.createReadStream(__dirname+"/duplicate-error/in/grouped.csv");
-		var csvStream = csv();
 
 		inStream
-			.pipe(csvStream)
+			.pipe(csv())
 			.pipe(csvNested(2))
-			.pipe(sink())
-			.on("error", function(err) {
+      .on("error", function(err) {
         assert(err);
-        assert.equal(err, "Duplicate header detected: 'group1'");
+        assert.equal(err, "Duplicate header detected: 'group1|one'");
         done();
-      })
+      });
   });
 
 });
