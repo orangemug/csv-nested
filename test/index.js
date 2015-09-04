@@ -7,29 +7,29 @@ var csvNested = require("../");
 
 describe("csv-nested", function() {
 
-	// NOTE: Just a starting point
-	it("basic test", function(done) {
-		var inStream = fs.createReadStream(__dirname+"/basic/in.csv");
-		var outData  = fs.readFileSync(__dirname+"/basic/out.json");
+  // NOTE: Just a starting point
+  it("basic test", function(done) {
+    var inStream = fs.createReadStream(__dirname+"/basic/in.csv");
+    var outData  = fs.readFileSync(__dirname+"/basic/out.json");
 
-		var csvStream = csv();
+    var csvStream = csv();
 
-		inStream
-			.pipe(csvStream)
-			.pipe(csvNested(2))
-			.on("data", function(data) {
-				var a = JSON.parse(data);
-				var b = JSON.parse(outData.toString());
-				assert.deepEqual(a, b);
-			})
+    inStream
+      .pipe(csvStream)
+      .pipe(csvNested(2))
+      .on("data", function(data) {
+        var a = JSON.parse(data);
+        var b = JSON.parse(outData.toString());
+        assert.deepEqual(a, b);
+      })
       .on("end", function() {
-				done();
+        done();
       })
 
-	});
+  });
 
-	it("duplicate error", function(done) {
-		var inStream = fs.createReadStream(__dirname+"/duplicate-error/in.csv");
+  it("duplicate error", function(done) {
+    var inStream = fs.createReadStream(__dirname+"/duplicate-error/in.csv");
 
     var idx = 0;
     var errs = [
@@ -37,9 +37,9 @@ describe("csv-nested", function() {
       "Duplicate header detected: 'group1|two'"
     ];
 
-		inStream
-			.pipe(csv())
-			.pipe(csvNested(2))
+    inStream
+      .pipe(csv())
+      .pipe(csvNested(2))
       .on("error", function(err) {
         assert(err);
         assert.equal(err, errs[idx]);
